@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/mvn'
-  args: ['release:prepare release:perform -Darguments="-Djavadoc.skip=true -Dmaven.deploy.skip=true"']
+  args: ['release:prepare','release:perform', '-Darguments="-Djavadoc.skip=true -Dmaven.deploy.skip=true"']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/pingpong-service:$TAG_NAME', '.']
 images: ['gcr.io/$PROJECT_ID/pingpong-service:$TAG_NAME']
