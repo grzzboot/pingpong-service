@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/cloud-builders/mvn'
+  args: ['install']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/pingpong-service-simple', 'pingpong-service-simple']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/pingpong-service-postgres', 'pingpong-service-postgres']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/pingpong-service-postgres-redis', 'pingpong-service-postgres-redis']
+images: ['gcr.io/$PROJECT_ID/pingpong-service-simple', 'gcr.io/$PROJECT_ID/pingpong-service-postgres', 'gcr.io/$PROJECT_ID/pingpong-service-postgres-redis']
