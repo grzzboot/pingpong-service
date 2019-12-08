@@ -2,5 +2,5 @@ steps:
 - name: 'gcr.io/cloud-builders/mvn'
   args: ['install']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--tag=gcr.io/$PROJECT_ID/pingpong-service', '.']
-images: ['gcr.io/$PROJECT_ID/pingpong-service']
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/pingpong-service-simple', '.']
+images: ['gcr.io/$PROJECT_ID/pingpong-service-simple']

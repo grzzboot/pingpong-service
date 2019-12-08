@@ -17,12 +17,10 @@ public class PingPongService {
 	private static final String MESSAGE_BASE = "Pong";
 
 	private final MemesRepository memesRepository;
-	private final MemesCacheService memesCacheService;
 
 	@Autowired
-	public PingPongService(MemesRepository memesRepository, MemesCacheService memesCacheService) {
+	public PingPongService(MemesRepository memesRepository) {
 		this.memesRepository = memesRepository;
-		this.memesCacheService = memesCacheService;
 	}
 
 	public PingEntity ping(String name, boolean expensive, boolean meme, boolean cache) {
@@ -34,13 +32,7 @@ public class PingPongService {
 			sb.append(" " + name);
 		}
 		if (meme) {
-			if (cache) {
-				sb.append(" - '" + memesCacheService.getCachedRandomMeme().getMeme() + "'");
-
-			} else {
-				sb.append(" - '" + getRandomMeme(memesRepository.getMemes()).getMeme() + "'");
-			}
-
+			sb.append(" - '" + getRandomMeme(memesRepository.getMemes()).getMeme() + "'");
 		}
 		return new PingEntity(sb.toString());
 	}
