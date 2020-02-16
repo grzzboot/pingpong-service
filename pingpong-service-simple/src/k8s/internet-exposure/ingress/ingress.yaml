@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pingpong-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "pingpong-static-ip"
+    kubernetes.io/ingress.allow-http: "false"
+spec:
+  tls:
+  - secretName: tls-certificate-secret
+  rules:
+    - host: dev.pingpong.com
+      http:
+        paths:
+          - path: /ping
+            backend:
+              serviceName: pingpong-service
+              servicePort: 8080
