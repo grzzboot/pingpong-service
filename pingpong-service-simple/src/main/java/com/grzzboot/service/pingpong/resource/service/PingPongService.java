@@ -1,5 +1,7 @@
 package com.grzzboot.service.pingpong.resource.service;
 
+import java.util.Random;
+
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -12,6 +14,12 @@ import lombok.extern.slf4j.Slf4j;
 public class PingPongService {
 
 	private static final String MESSAGE_BASE = "Pong";
+	
+	private Random random;
+	
+	public PingPongService() {
+		random = new Random(System.currentTimeMillis());
+	}
 
 	public PingEntity ping(String name, boolean expensive) {
 		StringBuilder sb = new StringBuilder(MESSAGE_BASE);
@@ -26,16 +34,12 @@ public class PingPongService {
 
 	private void doExpensiveCalculation() {
 		long start = System.currentTimeMillis();
-		for(int i = 0; i < 5000; i++) {
-			for(int j = 0 ; j < 10000; j++) {
-				Math.log(i*j);
-			}
-			long split = System.currentTimeMillis() - start;
-			if(split > 500) {
-				log.debug("Aborting expensive calculation after approx {} ms.", split);
-				return;
-			}
-		}
+		long split = start;
+		do {
+			Math.log(random.nextLong());
+			split = System.currentTimeMillis() - start;
+		} while (split <= 50);
+		log.debug("Aborting expensive calculation after approx {} ms.", split);
 	}
 
 }
