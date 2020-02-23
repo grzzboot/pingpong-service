@@ -22,10 +22,8 @@ public class PingResourceController {
 
 	@GetMapping(path = "/ping")
 	public PingResource ping(@RequestParam(required = false) String name,
-			@RequestParam(required = false, defaultValue = "false") boolean expensive,
-			@RequestParam(required = false, defaultValue = "false") boolean meme,
-			@RequestParam(required = false, defaultValue = "false") boolean cache) {
-		return new PingResource(pingPongService.ping(name, expensive, meme, cache).getMessage());
+			@RequestParam(required = false, defaultValue = "false") boolean meme) {
+		return new PingResource(pingPongService.ping(name, meme).getMessage());
 	}
 
 }
