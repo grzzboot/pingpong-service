@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: pingpong-service-simple
-          image: gcr.io/pingpong-site1-gcp-demo/pingpong-service-postgres:latest
+          image: gcr.io/pingpong-site1-gcp-demo/pingpong-service-postgres-redis:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -39,4 +39,4 @@ spec:
             timeoutSeconds: 1
           env:
             - name: JAVA_OPTS
-              value: "-Dspring.profiles.active=postgres"
+              value: "-Dspring.profiles.active=postgres,redis"

@@ -1,0 +1,9 @@
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: pingpong-cache-service
+subsets:
+  - addresses:
+      - ip: <YOUR-IP>
+    ports:
+      - port: 6379

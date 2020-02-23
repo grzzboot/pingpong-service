@@ -25,11 +25,8 @@ public class PingPongService {
 		this.memesCacheService = memesCacheService;
 	}
 
-	public PingEntity ping(String name, boolean expensive, boolean meme, boolean cache) {
+	public PingEntity ping(String name, boolean meme, boolean cache) {
 		StringBuilder sb = new StringBuilder(MESSAGE_BASE);
-		if (expensive) {
-			doExpensiveCalculation();
-		}
 		if (!StringUtils.isEmpty(name)) {
 			sb.append(" " + name);
 		}
@@ -43,12 +40,6 @@ public class PingPongService {
 
 		}
 		return new PingEntity(sb.toString());
-	}
-
-	private void doExpensiveCalculation() {
-		for (int i = 0; i < 50000000; i++) {
-			Math.log(i);
-		}
 	}
 
 	private MemeEntity getRandomMeme(List<MemeEntity> memes) {

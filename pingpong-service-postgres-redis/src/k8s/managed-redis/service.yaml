@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pingpong-cache-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 6379
