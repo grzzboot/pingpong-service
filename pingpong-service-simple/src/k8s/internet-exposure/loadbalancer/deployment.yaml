@@ -3,7 +3,7 @@ apiVersion: apps/v1
 metadata:
   name: pingpong-deployment
 spec:
-  replicas: 2
+  replicas: 1
   strategy:
     rollingUpdate:
       maxSurge: 1
