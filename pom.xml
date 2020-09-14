@@ -48,6 +48,7 @@
 		<module>pingpong-service-simple</module>
 		<module>pingpong-service-postgres</module>
 		<module>pingpong-service-postgres-redis</module>
+		<module>pingpong-service-cloud-storage</module>
 	</modules>
 
 </project>

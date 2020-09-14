@@ -1,0 +1,50 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: pingpong-deployment
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  minReadySeconds: 5
+  template:
+    spec:
+      containers:
+        - name: pingpong-service-cloud-storage
+          image: gcr.io/pingpong-site1-gcp-demo/pingpong-service-cloud-storage:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 100m
+              memory: 250Mi
+            limits:
+              cpu: 2.0
+              memory: 500Mi
+          readinessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            timeoutSeconds: 1
+            httpGet:
+              path: /actuator/health
+              port: 8080
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 1
+          env:
+            - name: JAVA_OPTS
+              value: "-Dspring.profiles.active=cloudstorage"
+          volumeMounts:
+            - name: pingpong-cloud-storage-sa-key
+              mountPath: "/buckets-sa-key"
+              readOnly: true
+      volumes:
+        - name: pingpong-cloud-storage-sa-key
+          secret:
+            secretName: pingpong-cloud-storage-sa-key
