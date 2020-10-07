@@ -3,6 +3,6 @@ kind: Service
 metadata:
   name: pingpong-service
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: 8080
