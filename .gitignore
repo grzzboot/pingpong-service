@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+# Generated service account JSON keys
+*.json
+
 # Log file
 *.log
 
