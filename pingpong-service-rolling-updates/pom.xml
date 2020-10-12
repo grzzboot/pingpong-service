@@ -8,25 +8,13 @@
 		<artifactId>pingpong-service-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>pingpong-service-cloud-storage</artifactId>
-	<name>pingpong-service-cloud-storage</name>
-	<description>A pingpong-service variant that uses GCP Cloud Storage</description>
+	<artifactId>pingpong-service-rolling-updates</artifactId>
+	<name>pingpong-service-rolling-updates</name>
+	<description>A pingpong-service variant used to demonstrate how rolling update works (and not works)</description>
 
 	<properties>
 		<java.version>11</java.version>
 	</properties>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.google.cloud</groupId>
-				<artifactId>libraries-bom</artifactId>
-				<version>12.0.0</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<dependencies>
 
@@ -41,19 +29,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.google.cloud</groupId>
-			<artifactId>google-cloud-storage</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.4.6</version>
 		</dependency>
 
 		<dependency>

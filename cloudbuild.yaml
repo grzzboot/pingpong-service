@@ -10,4 +10,6 @@ steps:
   args: ['build', '--tag=gcr.io/$PROJECT_ID/pingpong-service-postgres-redis', 'pingpong-service-postgres-redis']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/pingpong-service-cloud-storage', 'pingpong-service-cloud-storage']
-images: ['gcr.io/$PROJECT_ID/pingpong-service-simple', 'gcr.io/$PROJECT_ID/pingpong-service-postgres', 'gcr.io/$PROJECT_ID/pingpong-service-postgres-redis', 'gcr.io/$PROJECT_ID/pingpong-service-cloud-storage']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/pingpong-service-rolling-updates:v1', '--tag=gcr.io/$PROJECT_ID/pingpong-service-rolling-updates:v2', 'pingpong-service-rolling-updates']
+images: ['gcr.io/$PROJECT_ID/pingpong-service-simple', 'gcr.io/$PROJECT_ID/pingpong-service-postgres', 'gcr.io/$PROJECT_ID/pingpong-service-postgres-redis', 'gcr.io/$PROJECT_ID/pingpong-service-cloud-storage', 'gcr.io/$PROJECT_ID/pingpong-service-rolling-updates:v1', 'gcr.io/$PROJECT_ID/pingpong-service-rolling-updates:v2']
