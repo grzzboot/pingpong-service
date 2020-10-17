@@ -49,6 +49,7 @@
 		<module>pingpong-service-postgres</module>
 		<module>pingpong-service-postgres-redis</module>
 		<module>pingpong-service-cloud-storage</module>
+		<module>pingpong-service-secrets</module>
 	</modules>
 
 </project>

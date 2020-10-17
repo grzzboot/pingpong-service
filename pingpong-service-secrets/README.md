@@ -1,0 +1,2 @@
+# pingpong-service-secrets
+
