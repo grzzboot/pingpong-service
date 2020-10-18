@@ -13,8 +13,8 @@ spec:
     spec:
       containers:
         - name: pingpong-service-simple
-          image: gcr.io/pingpong-site1-gcp-demo/pingpong-service-secrets:v1
-          imagePullPolicy: Never
+          image: gcr.io/pingpong-site1-gcp-demo/pingpong-service-secrets:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           resources:
