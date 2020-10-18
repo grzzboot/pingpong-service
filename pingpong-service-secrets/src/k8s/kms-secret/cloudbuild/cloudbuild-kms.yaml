@@ -1,0 +1,21 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'Decrypt secret'
+  args: ['kms', 
+         'decrypt', 
+         '--key=pingpong-secrets-key', 
+         '--keyring=pingpong-secrets-keyring', 
+         '--location=global',
+         '--plaintext-file=pingpong-secrets.env.decrypted',
+         '--ciphertext-file=pingpong-secrets.env.encrypted']
+- id: 'Perform deploy'
+  name: 'gcr.io/cloud-builders/kubectl'
+  entrypoint: bash
+  args:
+  - '-c'
+  - |
+    gcloud container clusters get-credentials --zone "$$CLOUDSDK_COMPUTE_ZONE" "$$CLOUDSDK_CONTAINER_CLUSTER"
+    kubectl kustomize . | kubectl apply -f -
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=europe-west3-a'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=pingpong-site1-cluster'

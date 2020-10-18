@@ -4,6 +4,11 @@
 # Generated service account JSON keys
 *.json
 
+# Encrypted/Decrypted KMS files
+*.decrypted
+*.encrypted
+*.managed
+
 # Log file
 *.log
 
